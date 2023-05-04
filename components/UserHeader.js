@@ -27,14 +27,14 @@ const UserHeader = ({data}) => {
               <span>{role}</span>
             </div>
             <div className="user-img ml-3">
-              {!avatar?<motion.img animate={{rotate:360}} transition={{repeat:Infinity, duration:2}} src='/svg/user.svg' className="w-7 h-8 rounded-full" />:<img src={avatar} className="w-7 h-8 rounded-full" />}
+              {!avatar?<motion.img whileHover={{scale:1.2}} animate={{rotate:360}} transition={{repeat:Infinity, duration:2}} src='/svg/user.svg' className="w-7 h-8 rounded-full" />:<img src={avatar} className="w-7 h-8 rounded-full" />}
               
             </div>
           </div>
           <div className="uefhiquef h-7 w-7 mt-2.5 mr-16 flex flex-row">
-            <motion.img whileHover={{rotate:720}} transition={{duration:2}} className="h-11 cursor-pointer pb-4 " src="/svg/noti.svg" />
+            <motion.img whileHover={{scale:1.2}} whileTap={{ scale: 0.9 }} className="h-11 cursor-pointer pb-4 " src="/svg/noti.svg" />
             <motion.img
-              animate={{}}
+              whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}
               className="h-7 ml-4 cursor-pointer"
               src="/svg/logout.svg "
               onClick={() => {
