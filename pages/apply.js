@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import styles from "../styles/apply.module.css";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const Apply = () => {
+  const router = useRouter();
   const [handle, setHandle] = useState("");
   const [email, setEmail] = useState("");
-  const [password,setPassword] = useState("")
+  const [password, setPassword] = useState("");
   const [category, setCategory] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
@@ -16,7 +19,30 @@ const Apply = () => {
     if (!category) {
       return toast.error("Please select a category");
     }
-    toast.success("You are registered successfully!");
+    fetch("http://localhost:8080/api/register", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        handle,
+        email,
+        password,
+        category,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === "success") {
+          toast("You are registered succesfully");
+          localStorage.setItem("LinkTreeToken", data.token);
+          setSubmitted(true);
+          router.push("/login");
+        }
+      })
+      .catch((err) => {
+        toast.error("try a different username");
+      });
   };
 
   return (
@@ -56,7 +82,7 @@ const Apply = () => {
                   <input
                     className="ml-1 focus:outline-none"
                     value={handle}
-                    onChange={e=>setHandle(e.target.value)}
+                    onChange={(e) => setHandle(e.target.value)}
                     type="text "
                     placeholder="Social Handle"
                     required
@@ -65,7 +91,7 @@ const Apply = () => {
                 <input
                   className="shadow-md border-2  my-2 px-2 py-1 w-2/3"
                   value={email}
-                  onChange={e=>setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="Enter your email"
                   required
@@ -73,7 +99,7 @@ const Apply = () => {
                 <input
                   className="shadow-md border-2  my-2 px-2 py-1 w-2/3"
                   value={password}
-                  onChange={e=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="Set a password"
                 />

@@ -1,6 +1,9 @@
+import { Router } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
 
 const UserHeader = () => {
+  const router = useRouter();
   return (
     <>
       <header className="flex flex-row justify-between items-center">
@@ -21,13 +24,19 @@ const UserHeader = () => {
               <span>Creator</span>
             </div>
             <div className="user-img ml-3">
-                <img src="/svg/user.svg" className="w-7 h-8 rounded-full" />
-              </div>
+              <img src="/svg/user.svg" className="w-7 h-8 rounded-full" />
+            </div>
           </div>
           <div className="uefhiquef h-7 w-7 mt-2.5 mr-16 flex flex-row">
-            <img classname="h-11" src="/svg/noti.svg"></img>
-            <img className="h-7 ml-4 " src="/svg/logout.svg "></img>
-            
+            <img classname="h-11 " src="/svg/noti.svg" />
+            <img
+              className="h-7 ml-4 "
+              src="/svg/logout.svg "
+              onClick={() => {
+                localStorage.clear();
+                router.push("/login");
+              }}
+            />
           </div>
         </div>
       </header>

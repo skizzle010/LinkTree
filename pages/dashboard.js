@@ -3,9 +3,9 @@ import LinkBox from "../components/LinkBox";
 import UserHeader from "../components/UserHeader";
 
 const dashboard = () => {
-  // useEffect(()=>{
-  //   if(!localStorage.getItem("LinkTreeToken"))return window.location.href ="/login"
-  // },[])
+  useEffect(()=>{
+    if(!localStorage.getItem("LinkTreeToken"))return window.location.href ="/login"
+  },[])
   return (
     <>
       <div className="">
