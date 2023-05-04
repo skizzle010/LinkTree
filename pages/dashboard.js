@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import LinkBox from "../components/LinkBox";
+import UserHeader from "../components/UserHeader";
 
 const dashboard = () => {
   // useEffect(()=>{
@@ -8,7 +9,7 @@ const dashboard = () => {
   return (
     <>
       <div className="">
-        <userHeader></userHeader>
+        <UserHeader>UserHeader</UserHeader>
         <span className="header"></span>
         <main>
         <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-5  "> 
