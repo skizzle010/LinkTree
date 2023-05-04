@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import LinkBox from "../components/LinkBox";
 
 const dashboard = () => {
   // useEffect(()=>{
@@ -7,18 +8,14 @@ const dashboard = () => {
   return (
     <>
       <div className="">
+        <userHeader></userHeader>
         <span className="header"></span>
         <main>
-          <section> 
-            <div className="flex items-center">
-              <div className="bg-red-400 inline-flex flex-shrink-0 items-center justify-center h-16 w-16 rounded-full mr-6">
-                <img src='/svg/iconmonstr-link-thin.svg' className="w-6"/>
-              </div>
-              <div className=""> 
-              <span className="inline-block text-2x1 font-bold">5</span>
-              <span className="block text-grey-500">Links</span>
-              </div>
-            </div>
+        <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-5  "> 
+            <LinkBox lbTitle="Links" lbNumber="12" lbSvg="links.svg" lbTheme="red"/>
+            <LinkBox lbTitle="Growth" lbNumber="30%" lbSvg="report.svg" lbTheme="blue"/>
+            <LinkBox lbTitle="Links" lbNumber="12" lbSvg="links.svg" lbTheme="red"/>
+            <LinkBox lbTitle="Growth" lbNumber="30%" lbSvg="report.svg" lbTheme="blue"/>
           </section>
           
           <section></section>
