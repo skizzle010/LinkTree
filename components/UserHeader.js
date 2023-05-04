@@ -2,7 +2,9 @@ import { Router } from "next/router";
 import React from "react";
 import { useRouter } from "next/router";
 
-const UserHeader = () => {
+const UserHeader = ({data}) => {
+  const {name,role,handle,avatar,links} = data;
+  console.log(avatar);
   const router = useRouter();
   return (
     <>
@@ -20,17 +22,18 @@ const UserHeader = () => {
         <div className="mb-4 flex flex-row">
           <div className="inline-flex mr-5 text-left items-center bg-gray-200 px-5 py-2 rounded-lg">
             <div className="text-xs md:text-md flex flex-col flex-wrap w-16">
-              <span className="font-bold">Name</span>
-              <span>Creator</span>
+              <span className="font-bold">{handle}</span>
+              <span>{role}</span>
             </div>
             <div className="user-img ml-3">
-              <img src="/svg/user.svg" className="w-7 h-8 rounded-full" />
+              {!avatar?<img src='/svg/user.svg' className="w-7 h-8 rounded-full" />:<img src={avatar} className="w-7 h-8 rounded-full" />}
+              
             </div>
           </div>
           <div className="uefhiquef h-7 w-7 mt-2.5 mr-16 flex flex-row">
-            <img classname="h-11 " src="/svg/noti.svg" />
+            <img className="h-11 cursor-pointer" src="/svg/noti.svg" />
             <img
-              className="h-7 ml-4 "
+              className="h-7 ml-4 cursor-pointer"
               src="/svg/logout.svg "
               onClick={() => {
                 localStorage.clear();
