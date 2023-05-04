@@ -1,11 +1,21 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import LinkTree from "../components/LinkTree";
+import Link from "next/link";
+import SocialTree from "../components/SocialTree";
 
 const handle = () => {
   const router = useRouter();
   const [data, setData] = useState({});
   const [userFound, setUserFound] = useState(false);
+  const [social, setSocial] = useState({
+    instagram: "",
+    facebook: "",
+    twitter: "",
+    linkedin: "",
+    youtube: "",
+    github: "",
+  });
   useEffect(() => {
     if (router.query?.handle) {
       fetch(`http://localhost:8080/get/${router.query.handle}`)
@@ -25,13 +35,34 @@ const handle = () => {
         });
     }
   }, [router.query]);
+
+  useEffect(() => {
+    if (router.query?.handle) {
+        fetch(`http://localhost:8080/get/socials/${router.query.handle}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "error") {
+              return toast.error(data.error);
+            }
+            if (data.status === "success") {
+              setSocial(data);
+    
+              console.log(data.userData)
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+  }, [router.query]);
+
   if(!userFound){
     return (
         <div> 
-            <div className="not-found px-3">
-                <h1>User not Found 😔</h1>
-                <br/>
-                <p>Check the spelling again!!</p>
+            <div className="flex justify-center items-center h-screen">
+                <h1 className="font-bold text-lg">User not Found 😔</h1>
+                <p className="ml-2">Check the spelling again!!</p>
+                <p className="ml-2">Create your own</p><Link className="bg-indigo-600 px-2 ml-2 text-white hover:bg-indigo-300 transition-all duration-500" href="/apply">LinkTree</Link>
             </div>
         </div>
     )
@@ -39,6 +70,7 @@ const handle = () => {
   return (
     <div>
       <LinkTree data={data} />
+      <SocialTree social={social}/>
     </div>
   );
 };
