@@ -1,6 +1,7 @@
 import { Router } from "next/router";
 import React from "react";
 import { useRouter } from "next/router";
+import { delay, motion } from "framer-motion";
 
 const UserHeader = ({data}) => {
   const {name,role,handle,avatar,links} = data;
@@ -10,14 +11,14 @@ const UserHeader = ({data}) => {
     <>
       <header className="flex flex-row justify-between items-center">
         <div className="flex flex-col md:flex-row p-5">
-          <button className="inline-flex w-full md:w-auto px-5 py-3 text-red-500 font-bold hover:text-red-700 hover:bg-red-100 rounded-md mb-3 border-2 border-red-500">
+          <motion.button whileHover={{scale:1.1}} className="inline-flex w-full md:w-auto px-5 py-3 text-red-500 font-bold hover:text-red-700 hover:bg-red-100 rounded-md mb-3 border-2 border-red-500">
             <img src="/svg/link-edit.svg" className="w-6 mr-3" />
             Edit Links
-          </button>
-          <button className="inline-flex w-full md:w-auto px-5 py-3 text-blue-500 font-bold hover:text-blue-700 hover:bg-blue-100 rounded-md mb-3 border-2 border-blue-500  md:ml-4">
+          </motion.button>
+          <motion.button whileHover={{scale:1.1}} className="inline-flex w-full md:w-auto px-5 py-3 text-blue-500 font-bold hover:text-blue-700 hover:bg-blue-100 rounded-md mb-3 border-2 border-blue-500  md:ml-4">
             <img src="/svg/profile.svg" className="w-6 mr-3" />
             Edit profile
-          </button>
+          </motion.button>
         </div>
         <div className="mb-4 flex flex-row">
           <div className="inline-flex mr-5 text-left items-center bg-gray-200 px-5 py-2 rounded-lg">
@@ -26,13 +27,14 @@ const UserHeader = ({data}) => {
               <span>{role}</span>
             </div>
             <div className="user-img ml-3">
-              {!avatar?<img src='/svg/user.svg' className="w-7 h-8 rounded-full" />:<img src={avatar} className="w-7 h-8 rounded-full" />}
+              {!avatar?<motion.img animate={{rotate:360}} transition={{repeat:Infinity, duration:2}} src='/svg/user.svg' className="w-7 h-8 rounded-full" />:<img src={avatar} className="w-7 h-8 rounded-full" />}
               
             </div>
           </div>
           <div className="uefhiquef h-7 w-7 mt-2.5 mr-16 flex flex-row">
-            <img className="h-11 cursor-pointer" src="/svg/noti.svg" />
-            <img
+            <motion.img whileHover={{rotate:720}} transition={{duration:2}} className="h-11 cursor-pointer pb-4 " src="/svg/noti.svg" />
+            <motion.img
+              animate={{}}
               className="h-7 ml-4 cursor-pointer"
               src="/svg/logout.svg "
               onClick={() => {

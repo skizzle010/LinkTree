@@ -114,7 +114,7 @@ const Apply = () => {
                       checked={category === "Creator"}
                       onChange={handleCategoryChange}
                     />
-                    <p className="pl-2">Creator</p>
+                    <p className="pl-2">Imposter</p>
                   </label>
                   <label className="flex flex-row mr-3 ">
                     <input
