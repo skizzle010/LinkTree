@@ -110,8 +110,8 @@ const Apply = () => {
                   <label className="flex flex-row mr-3 ">
                     <input
                       type="checkbox"
-                      value="Creator"
-                      checked={category === "Creator"}
+                      value="Imposter"
+                      checked={category === "Imposter"}
                       onChange={handleCategoryChange}
                     />
                     <p className="pl-2">Imposter</p>

@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 
 const LinkTreeCard = ({ title, url, image }) => {
-  console.log(url);
   return (
     <>
       <span className="w-full">
