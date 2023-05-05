@@ -6,7 +6,6 @@ import Link from "next/link";
 
 const UserHeader = ({ data }) => {
   const {role, handle, avatar, links } = data;
-  console.log(avatar);
   const router = useRouter();
   return (
     <>
@@ -32,13 +31,13 @@ const UserHeader = ({ data }) => {
           </Link>
         </div>
         <div className="mb-4 flex flex-row">
-          <div className="inline-flex mr-5 text-left items-center bg-gray-200 px-5 py-2 rounded-lg">
+          <div className="inline-flex mr-5 text-left items-center bg-gray-200 px-5 py-2 rounded-lg cursor-pointer" onClick={()=>{router.push(`./${handle}`)}}>
             <div className="text-xs md:text-md flex flex-col flex-wrap w-16">
               <span className="font-bold">{handle} </span>
               <span>{role}</span>
             </div>
 
-            <div className="user-img ml-3">
+            <div className="user-img ml-3" >
               {!avatar ? (
                 <motion.img
                   whileHover={{ scale: 1.2 }}

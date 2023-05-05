@@ -28,7 +28,6 @@ const handle = () => {
           if (data.status === "success") {
             setData(data.userData);
             setUserFound(true);
-            console.log(data.userData)
           }
         })
         .catch((err) => {
@@ -47,8 +46,6 @@ const handle = () => {
             }
             if (data.status === "success") {
               setSocial(data);
-    
-              console.log(data.userData)
             }
           })
           .catch((err) => {
