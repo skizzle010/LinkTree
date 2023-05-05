@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import LinkBox from "../components/LinkBox";
 import UserHeader from "../components/UserHeader";
 import { toast } from "react-toastify";
+import UserContext from "../context/userContext";
 
 const dashboard = () => {
 
   const[data,setData] = useState({})
+  const {setUserdata} = useContext(UserContext);
   useEffect(()=>{
     if(!localStorage.getItem("LinkTreeToken"))return window.location.href ="/login";
     fetch('http://localhost:8080/data/dashboard',{
@@ -20,6 +22,7 @@ const dashboard = () => {
     .then(data=>{
       if(data.status==='error') return toast.error("Error happened")
       setData(data.userData);
+      setUserData(data.userData); 
       localStorage.setItem('userHandle',data.userData.handle)
       toast.success(data.message)
     }).catch(err=>{

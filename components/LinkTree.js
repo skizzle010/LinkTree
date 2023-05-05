@@ -31,7 +31,7 @@ const LinkTree = ({ data }) => {
                 <LinkTreeCard
                   title={link.title}
                   url={link.url}
-                  image={link.image}
+                  image={link.icon}
                 />
               </motion.div>
             ))}
