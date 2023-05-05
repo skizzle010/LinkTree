@@ -5,7 +5,7 @@ import { delay, motion } from "framer-motion";
 import Link from "next/link";
 
 const UserHeader = ({ data }) => {
-  const { name, role, handle, avatar, links } = data;
+  const {role, handle, avatar, links } = data;
   console.log(avatar);
   const router = useRouter();
   return (
