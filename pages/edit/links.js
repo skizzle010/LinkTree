@@ -33,7 +33,7 @@ const links = () => {
         })
         ) 
 
-        fetch('http://localhost:8080/save/links',
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/save/links`,
             {
                 method:"POST",
                 headers:{
@@ -52,7 +52,7 @@ const links = () => {
 
     useEffect(()=>{
         if(!localStorage.getItem('LinkTreeToken')) return router.push('/login');
-        fetch(`http://localhost:8080/load/links`,{
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/load/links`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

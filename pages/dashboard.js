@@ -10,7 +10,7 @@ const dashboard = () => {
   const {setUserData} = useContext(UserContext);
   useEffect(()=>{
     if(!localStorage.getItem("LinkTreeToken"))return window.location.href ="/login";
-    fetch('http://localhost:8080/data/dashboard',{
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/data/dashboard`,{
       method: 'POST',
       headers:{
         'Content-type':'application/json'

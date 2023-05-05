@@ -10,7 +10,7 @@ const Apply = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8080/api/login", {
+    fetch( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/login`, {
       method: 'POST',
       headers: {
         "content-type": "application/json",

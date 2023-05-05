@@ -19,7 +19,7 @@ const handle = () => {
   });
   useEffect(() => {
     if (router.query?.handle) {
-      fetch(`http://localhost:8080/get/${router.query.handle}`)
+      fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/get/${router.query.handle}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "error") {
@@ -38,7 +38,7 @@ const handle = () => {
 
   useEffect(() => {
     if (router.query?.handle) {
-        fetch(`http://localhost:8080/get/socials/${router.query.handle}`)
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/get/socials/${router.query.handle}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.status === "error") {

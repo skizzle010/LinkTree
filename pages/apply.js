@@ -19,7 +19,7 @@ const Apply = () => {
     if (!category) {
       return toast.error("Please select a category");
     }
-    fetch("http://localhost:8080/api/register", {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/register`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
