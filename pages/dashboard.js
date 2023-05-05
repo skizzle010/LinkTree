@@ -7,7 +7,7 @@ import UserContext from "../context/userContext";
 const dashboard = () => {
 
   const[data,setData] = useState({})
-  const {setUserdata} = useContext(UserContext);
+  const {setUserData} = useContext(UserContext);
   useEffect(()=>{
     if(!localStorage.getItem("LinkTreeToken"))return window.location.href ="/login";
     fetch('http://localhost:8080/data/dashboard',{
