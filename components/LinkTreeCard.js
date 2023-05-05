@@ -2,12 +2,13 @@ import React from "react";
 import Link from "next/link";
 
 const LinkTreeCard = ({ title, url, image }) => {
+  console.log(url);
   return (
     <>
       <span className="w-full">
         <a
           classname="flex flex-row items-center p-2 rounded-xl text-white bg-indigo-400 hover:bg-indigo-300 mb-3 mx-2 hover:translate-x-1 hover:translate-y-1 transition-all duration-500"
-          href={`https://${url.substring(1, url.length)}`}
+          href={url}
           target="_blank"
         >
           <img
